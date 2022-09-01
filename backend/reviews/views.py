@@ -18,4 +18,13 @@ def get_all_reviews(request):
 def make_review(request):
     print(
         'User', f"{request.user.id} {request.user.email} {request.user.username}")
-    
+    if request.method == 'POST':
+        serializer = ReviewSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'GET':
+        reviews = Review.objects.filter(user_id=request.user.id)
+        serializer = ReviewSerializer(reviews, many=True)
+        return Response(serializer.data)
