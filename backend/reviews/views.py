@@ -2,14 +2,14 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
-from .models import Review
+from .models import Review, Likes
 from .serializers import ReviewSerializer
 
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_all_reviews(request):
-    reviews = Review.objects.all()
+def get_all_reviews(request, movie_id):
+    reviews = Review.objects.all(movie_id = movie_id)
     serializer = ReviewSerializer(reviews, many=True)
     return Response(serializer.data)
 
@@ -28,3 +28,10 @@ def make_review(request):
         reviews = Review.objects.filter(user_id=request.user.id)
         serializer = ReviewSerializer(reviews, many=True)
         return Response(serializer.data)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def like_post(request):
+    print(
+        'User', f"{request.user.id} {request.user.email} {request.user.username}")
+    if request.method == "POST":
