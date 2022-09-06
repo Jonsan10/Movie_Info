@@ -8,18 +8,18 @@ class Review(models.Model):
     description = models.CharField(max_length=500)
     movie_id = models.CharField(max_length=500)
     rating = models.IntegerField()
-    timestamp = models.DateTimeField()
-    title = models.CharField(max_length=500)
+    likes = models.IntegerField()
+    dislikes = models.IntegerField()
 
 
-class Likes(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    review_id = models.CharField(max_length=500)
-    value = models.IntegerField()
+# class Likes(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     review_id = models.CharField(max_length=500)
+#     value = models.IntegerField()
 
 
-class Dislikes(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    review_id = models.CharField(max_length=500)
-    value = models.IntegerField()
+# class Dislikes(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     review_id = models.CharField(max_length=500)
+#     value = models.IntegerField()
 
