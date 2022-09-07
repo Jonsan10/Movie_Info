@@ -51,3 +51,4 @@ def delete_review(request, pk):
     if review.delete():
         return Response(status.HTTP_204_NO_CONTENT)
     return Response(status.HTTP_400_BAD_REQUEST)
+
