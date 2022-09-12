@@ -4,6 +4,5 @@ from reviews import views
 urlpatterns = [
     path('', views.create_review),
     path('<str:movie_id>/reviews/', views.get_all_reviews),
-    path('likesDislike/<int:pk>/', views.like_dislike_post),
     path('delete/<int:pk>/', views.delete_review),
 ]

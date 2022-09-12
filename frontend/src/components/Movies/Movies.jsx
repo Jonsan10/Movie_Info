@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import useAuth from '../../hooks/useAuth';
+import MovieCard from '../MovieCard/MovieCard';
 
 
-const MovieList = (props) => {
-    const [user, token] = useAuth();
+const Movies = (props) => {
 
+    
+    console.log(props.movies)
 
     return ( 
-        <div>
-            Movie
+        <div className='movies'>
+            {props.movies.map((movie, index) => <MovieCard movie={movie} key={index}/>
+            )}
         </div>
      );
 }
  
-export default MovieList;
+export default Movies;

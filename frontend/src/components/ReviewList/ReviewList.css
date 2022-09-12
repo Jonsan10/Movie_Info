@@ -1,0 +1,20 @@
+.form-grid{
+    padding: 0, 5em, 0, 5em;
+    background-color: #f14317;
+    margin-bottom: 5px;
+}
+.form{
+    padding-top: 1em;
+}
+.form-heading{
+    border:#f14317;
+    border-width: 2px;
+}
+.post-content{
+    padding-bottom: 1em;
+}
+.post-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
