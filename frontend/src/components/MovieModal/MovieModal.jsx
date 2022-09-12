@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const MovieModal = ({movie, show, handleClose}) => {
-    const {title, image, imdbRating, crew, year} = movie
+    const {title, image, imdbRating, crew, year, plot} = movie
     
     return ( 
         <Modal show={show} onHide={handleClose}>
@@ -16,7 +16,7 @@ const MovieModal = ({movie, show, handleClose}) => {
                       <h6>Crew: {crew}</h6>
                       <br></br>
                       <h6>Overview</h6>
-                      <p>{}</p>
+                      <p>{plot}</p>
                       </Modal>
                       <Modal.Footer>
                           <Button variant="secondary" onClick={handleClose}>Close</Button>
