@@ -1,9 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import MovieCard from "../../components/MovieCard/MovieCard";
 import axios from "axios";
 import Movies from "../../components/Movies/Movies";
+import './HomePage.css';
+
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -31,7 +32,7 @@ const HomePage = () => {
 
     const getComingSoon = async () => {
       try {
-        let response = await axios.get(`https://imdb-api.com/en/API/ComingSoon/k_a504ktls`, {
+        let response = await axios.get(`https://imdb-api.com/en/API/ComingSoon/k_3jnv7jrh`, {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -44,7 +45,7 @@ const HomePage = () => {
     };
     const getTopMovies = async () => {
       try {
-        let response = await axios.get(`https://imdb-api.com/en/API/Top250Movies/k_a504ktls`, {
+        let response = await axios.get(`https://imdb-api.com/en/API/Top250Movies/k_3jnv7jrh`, {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -63,22 +64,29 @@ const HomePage = () => {
 
 
   return (
-    <div>
-      <Movies movies = {popMovies}/>
+    <div className="container-fluid movie-list">
+      <br />
+      <h1>Trending</h1>
+      <div className="pop-row">
+        <Movies movies={popMovies} />
+      </div>
+      
+      <br />
+      <h1>Coming Soon</h1>
+      <div className="comingsoon-row">
+        <Movies movies={comingSoon} />
+      </div>
+      <br />
+      <h1>IMDb Top Movies</h1>
+      <div className="top-row">
+        <Movies movies={topMovies} />
+      </div>
+      
+      
     </div>
   );
-  }
+};
 export default HomePage;
 
 
 
-// <div>
-// <MovieBox {...popMovies.map(setPopMovies())}/>
-// <br />
-// <h1>Coming Soon</h1>
-// {/* <div> movies = {comingSoon}</div> */}
-// <br />
-// <h1>Top Movies</h1>
-// {/* <div> movies = {topMovies}</div> */}
-
-// </div>

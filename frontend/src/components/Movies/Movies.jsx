@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import MovieCard from '../MovieCard/MovieCard';
 
 
+
 const Movies = (props) => {
 
     

@@ -1,6 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+const Random = (props) => {
+
+}
+ 
+
+
+
 class Button extends React.Component {
 
   constructor(props) {
@@ -27,3 +34,5 @@ class Button extends React.Component {
 }
 
 render(<Button />, document.getElementById('container'));
+
+export default Random;

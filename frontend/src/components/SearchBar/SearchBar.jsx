@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Movies from '../Movies/Movies';
 
 const SearchBar = (props) => {
 
@@ -11,7 +12,7 @@ const SearchBar = (props) => {
     }
 
     async function searchMovie(searchBar){
-        let response = await axios.get(`https://imdb-api.com/en/API/SearchMovie/k_a504ktls/${searchBar}`)
+        let response = await axios.get(`https://imdb-api.com/en/API/Title/k_a504ktls/${Movies}/FullActor,Posters,Trailer,Ratings,Wikipedia,`)
         console.log(response.data.results)
         props.setSearchBar(response.data.results);
     }
@@ -22,6 +23,7 @@ const SearchBar = (props) => {
             <form className='searchbar' onSubmit={handleSubmit}>
                 <input type={'text'} placeholder="Search By Title" onChange={(event) => setSearchValue(event.target.value)}/>
                 <button className='searchButton' onClick={handleSubmit}>Search</button>
+                
 
             </form>
         </div>

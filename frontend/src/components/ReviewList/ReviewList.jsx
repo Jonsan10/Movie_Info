@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import './ReviewList.css'
-import { MDBIcon } from 'mdb-react-ui-kit';
+
 
 
 const Reviews = (props) => {
@@ -97,13 +97,13 @@ const Reviews = (props) => {
                             <h4 className="form-heading">{review.user.username}</h4>
                             <div className="post-content">{review.text}</div>
                             <div className='post-actions'>
-                            <MDBIcon onClick={() => {handleLikeSubmit(review)}}fas icon="thumbs-up" size='1x'/>
+                            <img onClick={() => {handleLikeSubmit(review)}}fas icon="thumbs-up" size='1x'/>
                             <h3>{review.likes}</h3>
                             
-                            <MDBIcon onClick={() => {handleDislikeSubmit(review)}}fas icon="thumbs-down" size='1x'/>
+                            <img onClick={() => {handleDislikeSubmit(review)}}fas icon="thumbs-down" size='1x'/>
                             <h3>{review.dislikes}</h3>
                             {user.user_id === review.user.id && 
-                            <MDBIcon onClick={() => props.deleteReview(review.id)}fas icon="trash-alt" size='1x'/>}
+                            <img onClick={() => props.deleteReview(review.id)}fas icon="trash-alt" size='1x'/>}
                             
                             </div>
                             

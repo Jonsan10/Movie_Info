@@ -1,21 +1,32 @@
-import { Modal, show, Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import React, { useState } from 'react';
+import './/MovieCard.css'
 
-// API_IMG = "https://m.media-amazon.com/images/M/";
+
+
 
 function MovieCard( {movie}) {
   const {title,image} = movie
 
-   const [show, setShow] = useState();
-  const handleShow=()=>setShow(true);
+   const [show, setShow] = useState(false);
+  const handleShow=()=>setShow(!show);
   const handleClose=()=>setShow(false);
 
   return (
 <div className="card text-center bg-secondary mb-3" onClick={handleShow} >
             <div className="card-body">
-              <img className="card-img-top" src={image} />
+              {/* <img className="card-img-top" src={image} /> */}
               <h3>{title}</h3>
+              {!show ? 
+              <div>
+              <img className="movie-poster" style={{width:'12rem'}}src={image}/>
+                      <h3>{movie.title}  </h3>
+                      <h4>IMDb: {movie.imDbRating}</h4>
+                      <h5>Release Date: {movie.year}</h5>
+                      <h6>Crew: {movie.crew}</h6>
+                      <br></br>
+                      </div>
+                      :null}
             </div>
         </div>
   );
